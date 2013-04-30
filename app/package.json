@@ -1,0 +1,26 @@
+{
+  "main": "index.html",
+  "name": "GaffaViewCompiler",
+  "description": "demo app of node-webkit",
+  "version": "0.0.1",
+  "keywords": [
+    "Gaffa",
+    "View",
+    "Compiler",
+    "JSON"
+  ],
+  "window": {
+    "toolbar": true,
+    "icon": "package.png",
+    "frame": true
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Maurice Butler <maurice.butler@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gaffa" : ">=0.0.0"
+  }
+}
