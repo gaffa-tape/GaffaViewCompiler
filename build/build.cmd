@@ -1,11 +1,11 @@
 mkdir output
 
-del output\app.nw
-del output\app.exe
+del output\gvc.nw
+del output\gvc.exe
 
-cd ..\app
+cd ..\gvc
 
-"C:\Program Files\WinRAR\winrar" a -r -afzip ..\build\output\app.nw .\*.*
+"C:\Program Files\WinRAR\winrar" a -r -afzip ..\build\output\gvc.nw .\*.*
 
 cd ..\build
 
@@ -13,8 +13,8 @@ copy /y node-webkit\*.* output\
 
 cd output
 
-copy /y /b nw.exe+app.nw app.exe 
+copy /y /b nw.exe+gvc.nw gvc.exe 
 
-start app.exe E:\Development\estate-forms\public\views
+start gvc.exe 
 
 cd..
