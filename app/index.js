@@ -36,7 +36,9 @@
                     }
                     
                     for (var i = 0; i < files.length; i++) {
-                        parseDefinition(path.join(args[0], files[i]), args[1] || args[0]);
+                        if(path.extname(files[i]).toLowerCase() === '.js') {
+                            parseDefinition(path.join(args[0], files[i]), args[1] || args[0]);
+                        }
                     }
                 });
             }
