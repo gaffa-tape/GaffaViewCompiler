@@ -26,26 +26,42 @@
         callback(error);
     }
 
+    function writeFiles(error, files){
+        
+        if(error){
+            console.log(error.stack);
+            return;
+        }
+        
+        for (var i = 0; i < files.length; i++) {
+            if(path.extname(files[i]).toLowerCase() === '.js') {
+                parseDefinition(path.join(args[0], files[i]), args[1] || args[0]);
+            }
+        }
+    }
+
     function serialise(error){
         if(!error && loaded === 3){
             if(args[0]){
-                fs.readdir(args[0], function(error, files){
+                fs.stat(args[0], function(error, stats){
                     if(error){
                         console.log(error.stack);
                         return;
                     }
-                    
-                    for (var i = 0; i < files.length; i++) {
-                        if(path.extname(files[i]).toLowerCase() === '.js') {
-                            parseDefinition(path.join(args[0], files[i]), args[1] || args[0]);
-                        }
+
+                    if(stats.isDirectory()){
+                        fs.readdir(args[0], writeFiles);
+                    } else {
+                        parseDefinition(args[0], args[1] || path.dirname(args[0]), function(error) {
+                            window.close();
+                        });
                     }
                 });
             }
         }
     }
 
-    function parseDefinition(fileName, destination){
+    function parseDefinition(fileName, destination, callback){
         fs.readFile(fileName, function (error, data) {
             if(error){
                 console.log(error.stack);
@@ -65,6 +81,10 @@
                     if(error){
                         console.log(error.stack);
                         return;
+                    }
+
+                    if(callback && typeof callback === 'function'){
+                        callback();
                     }
             });
         });

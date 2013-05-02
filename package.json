@@ -1,0 +1,30 @@
+{
+  "name": "GaffaViewCompiler",
+  "version": "0.0.1",
+  "description": "Gaffa View Compiler\r ==========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaffa-tape/GaffaViewCompiler.git"
+  },
+  "keywords": [
+    "gaffa",
+    "compile",
+    "JavaScript",
+    "view"
+  ],
+  "author": "Maurice Butler <maurice.butler@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": ">=1.1.1"
+  },
+  "readmeFilename": "readme.md",
+  "gitHead": "5bf503b70b99a147eadc429f5a116a1117aae011",
+  "preferGlobal": "true",
+  "bin": {
+    "gvc": "index.js"
+  }
+}

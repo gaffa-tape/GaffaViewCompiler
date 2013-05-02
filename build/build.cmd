@@ -3,7 +3,7 @@ mkdir output
 del output\gvc.nw
 del output\gvc.exe
 
-cd ..\app
+cd ..\gvc
 
 "C:\Program Files\WinRAR\winrar" a -r -afzip ..\build\output\gvc.nw .\*.*
 
