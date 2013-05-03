@@ -4,24 +4,17 @@ var program = require('commander'),
     fs = require('fs'),
     path = require('path'),
     packageJson = require('./package.json'),
-    watchPath = './',
-    outputPath = './';
+    watchPath = './views',
+    outputPath = './views',
+    mainScriptFile = 'scripts/main.browser.js';
     
 program
   .version(packageJson.version)
   .option('-v, --verbose', 'Verbose output')
-  .option('-w, --watch [path]', 'Watch Path [default ./]')
-  .option('-o, --output [path]', 'Output Path [default ./]')
+  .option('-w, --watch [path]', 'Watch Path [default' + watchPath + ']')
+  .option('-o, --output [path]', 'Output Path [default' + outputPath + ']')
+  .option('-m, --mainScript [file]', 'Main Script File [default' + mainScriptFile + ']')
   .parse(process.argv);
-
-
- if(program.watch){
-    watchPath = program.watch;
- }
-
- if(program.output){
-    outputPath = program.output;
- }
 
 function hasError(error){
     if(error){
@@ -41,7 +34,7 @@ function parseView(file, callback){
         command = path.join(path.dirname(process.argv[1]), 'build', 'output');
 
     if(process.platform === 'win32') {
-        command = path.join(command, 'gvc.exe ') + file;
+        command = path.join(command, 'gvc.exe ')  + path.join(process.cwd(), mainScriptFile) + ' ' + file;
     } else {
         // TODO: add other OS calls
     }
@@ -51,6 +44,18 @@ function parseView(file, callback){
     });
 }
 
+
+if(program.watch){
+    watchPath = program.watch;
+}
+
+if(program.output){
+    outputPath = program.output;
+}
+
+if(program.mainScript){
+    mainScriptFile = program.mainScript;
+}
 
 log('Watching ' + watchPath + ' for changes.');
 log('Output path is ' + outputPath);

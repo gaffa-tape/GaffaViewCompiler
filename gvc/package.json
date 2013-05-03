@@ -21,6 +21,6 @@
   "author": "Maurice Butler <maurice.butler@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "gaffa" : ">=0.0.0"
+    "crel" : ">=0.0.0"
   }
 }

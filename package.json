@@ -1,5 +1,5 @@
 {
-  "name": "GaffaViewCompiler",
+  "name": "gaffaviewcompiler",
   "version": "0.0.1",
   "description": "Gaffa View Compiler\r ==========",
   "main": "index.js",
