@@ -80,7 +80,7 @@
                     }
 
                     if(callback && typeof callback === 'function'){
-                     //   callback();
+                        callback();
                     }
             });
         });
