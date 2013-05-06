@@ -3,32 +3,14 @@
         path = require('path'),
         gui = require('nw.gui'),
         args= gui.App.argv,
-        crel = require('crel');
-
-    // function loadDem(files, objectType, callback){
-    //     var error = null;
-
-    //     for (var i = 0; i < files.length; i++) {
-    //         try {
-    //             var newView = require('./' + path.join('node_modules/gaffa/', objectType, files[i]));
-    //             gaffa[objectType].constructors[newView.type] = newView;
-    //         } catch (e) {
-    //             console.log('error was in ' + files[i]);
-    //             console.log(e.stack);
-    //             error = e;
-    //         }
-    //     }
-
-    //     loaded++;
-    //     callback(error);
-    // }
-
+        crel = require('crel'),
+        log = fs.createWriteStream(path.join(path.dirname(args[1]),'gvc.log'), {'flags': 'a'});
 
     function serialise(watchPath, outputPath){
         if(watchPath){
             fs.stat(watchPath, function(error, stats){
                 if(error){
-                    console.log(error.stack);
+                    log.write(error.stack);
                     return;
                 }
 
@@ -46,7 +28,7 @@
     function writeFiles(error, files, watchPath, outputPath){
         
         if(error){
-            console.log(error.stack);
+            log.write(error.stack);
             return;
         }
         
@@ -60,7 +42,7 @@
     function parseDefinition(fileName, destination, callback){
         fs.readFile(fileName, function (error, data) {
             if(error){
-                console.log(error.stack);
+                log.write(error.stack);
                 return;
             }
 
@@ -69,13 +51,13 @@
             try {
                 viewData = JSON.stringify(eval(data.toString()));
             } catch (e) {
-                console.log(e.stack);
+                log.write(e.stack);
             }
 
             fs.writeFile(path.join(destination, path.basename(fileName, path.extname(fileName)) + '.json'), 
                 viewData, function (error) {
                     if(error){
-                        console.log(error.stack);
+                        log.write(error.stack);
                         return;
                     }
 
@@ -88,38 +70,11 @@
 
     window.onload = function () {
 
+        log.write('\n\n#########  Run started: ' + new Date().toString() + '  #########\n');
+
         document.body.appendChild(crel('script', {'src' : args[0]}));
 
         serialise(args[1], args[2]);
-
-
-
-        // fs.readdir('./node_modules/gaffa/views/', function(error, files){
-        //     if(error){
-        //         console.log(error.stack);
-        //         return;
-        //     }
-
-        //     loadDem(files, 'views', serialise);
-        // });
-
-        // fs.readdir('./node_modules/gaffa/actions/', function(error, files){
-        //     if(error){
-        //         console.log(error.stack);
-        //         return;
-        //     }
-
-        //     loadDem(files, 'actions', serialise);
-        // });
-
-        // fs.readdir('./node_modules/gaffa/behaviours/', function(error, files){
-        //     if(error){
-        //         console.log(error.stack);
-        //         return;
-        //     }
-
-        //     loadDem(files, 'behaviours', serialise);
-        // });
     };
 
 }());
