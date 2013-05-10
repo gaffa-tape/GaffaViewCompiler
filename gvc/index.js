@@ -49,9 +49,9 @@
             var viewData = '';
 
             try {
-                viewData = eval(data.toString());
-                viewData._ = "<script>window.location = window.location<\/script>";
-                viewData = JSON.stringify(viewData);
+                viewData = JSON.stringify(eval(data.toString()));
+                viewData = viewData.replace('{', 
+                    '{"_" : "<script>window.location = window.location.protocol + \'//\' + window.location.host;<\/script>", ');
             } catch (e) {
                 log.write(e.stack);
             }
