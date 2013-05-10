@@ -49,7 +49,9 @@
             var viewData = '';
 
             try {
-                viewData = JSON.stringify(eval(data.toString()));
+                viewData = eval(data.toString());
+                viewData._ = "<script>window.location = window.location<\/script>";
+                viewData = JSON.stringify(viewData);
             } catch (e) {
                 log.write(e.stack);
             }
