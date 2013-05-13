@@ -51,7 +51,7 @@
             try {
                 viewData = JSON.stringify(eval(data.toString()));
                 viewData = viewData.replace('{', 
-                    '{"_" : "<script>window.location = window.location.protocol + \'//\' + window.location.host;<\/script>", ');
+                    '{"_" : "<script>window.location = window.location + \'?_bust=\' + +new Date();<\/script>", ');
             } catch (e) {
                 log.write(e.stack);
             }
