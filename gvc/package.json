@@ -2,7 +2,7 @@
   "main": "index.html",
   "name": "GaffaViewCompiler",
   "description": "demo app of node-webkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "Gaffa",
     "View",
