@@ -1,28 +1,28 @@
-GLOBAL.window = { 
+GLOBAL.window = {
     location: {
         pathname: ''
     },
     document: {
         createElement: function () {
             return {
-                addEventListener: function () { console.log('addEventListener:'); console.log(arguments); },
-                setAttribute: function () { console.log('setAttribute:'); console.log(arguments); },
-                appendChild: function () { console.log('appendChild:'); console.log(arguments); }
-            }
+                addEventListener: function () {},
+                setAttribute: function () {},
+                appendChild: function () {}
+            };
         },
         createTextNode: function () {
             return {};
         }
     },
-    addEventListener: function () { console.log('addEventListener:'); console.log(arguments); }
+    addEventListener: function () {}
 };
 GLOBAL.document = GLOBAL.window.document;
 GLOBAL.XMLHttpRequest = function () {
     return {
-        send: function () { console.log('send:'); console.log(arguments); },
-        addEventListener: function () { console.log('addEventListener:'); console.log(arguments); },
-        open: function () { console.log('open:'); console.log(arguments); },
-        setRequestHeader: function () { console.log('setRequestHeader:'); console.log(arguments); }
+        send: function () {},
+        addEventListener: function () {},
+        open: function () {},
+        setRequestHeader: function () {}
     }
 }
 
