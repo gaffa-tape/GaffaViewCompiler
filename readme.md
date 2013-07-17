@@ -5,13 +5,6 @@ Gaffa View Compiler is a file watcher and view parser for JavaScript Gaffa views
 
 When you save changes to a file being watched Gaffa View Compiler automagicly runs the view definition code, serialises the resulting object and saves it as [viewName].json.
 
-The underlying executable gvc.exe can also be run directly and used as a GUI.
-
-It is build using node-webkit ([https://github.com/rogerwang/node-webkit](https://github.com/rogerwang/node-webkit))
-
-The binarys for windows are included, and the Mac & Linux ones can be downloaded from the node-webkit repo ([https://github.com/rogerwang/node-webkit#downloads](https://github.com/rogerwang/node-webkit#downloads)) 
-
-
 Installation
 ------------
 

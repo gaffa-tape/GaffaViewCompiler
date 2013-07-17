@@ -1,6 +1,6 @@
 {
   "name": "gaffaviewcompiler",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Gaffa View Compiler",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "gaffa",
     "compile",
     "JavaScript",
-    "view"
+    "view",
+    "gvc"
   ],
   "author": "Maurice Butler <maurice.butler@gmail.com>",
   "license": "MIT",
@@ -25,7 +26,6 @@
     "temp": ">= 0.5.1"
   },
   "readmeFilename": "readme.md",
-  "gitHead": "5bf503b70b99a147eadc429f5a116a1117aae011",
   "preferGlobal": "true",
   "bin": {
     "gvc": "index.js"
