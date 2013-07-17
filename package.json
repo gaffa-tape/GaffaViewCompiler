@@ -19,7 +19,10 @@
   "author": "Maurice Butler <maurice.butler@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": ">=1.1.1"
+    "commander": ">= 1.1.1",
+    "gaffa": "0.8.x",
+    "browserify": "2.13.x",
+    "temp": ">= 0.5.1"
   },
   "readmeFilename": "readme.md",
   "gitHead": "5bf503b70b99a147eadc429f5a116a1117aae011",
