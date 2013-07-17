@@ -33,7 +33,7 @@ function log (message) {
 }
 
 
-log('Watching ' + watchPath + ' for changes. Output path is ' + outputPath);
+log('Watching ' + watchPath + ' for changes.');
 
 fs.watch(watchPath, function (eventType, filename) {
     if (eventType !== 'change' || path.extname(filename).toLowerCase() !== '.js') {
