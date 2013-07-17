@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var program = require('commander'),
-    fs = require('fs'),
-    path = require('path');
+        fs = require('fs'),
+        path = require('path');
 
 var packageJson = require('./package.json'),
     gvc = require('./gvc'),
@@ -12,12 +12,12 @@ var packageJson = require('./package.json'),
 
 
 program
-  .version(packageJson.version)
-  .option('-v, --verbose', 'Verbose output')
-  .option('-w, --watch [path]', 'Watch Path [default' + watchPath + ']', watchPath)
-  .option('-o, --output [path]', 'Output Path [default' + outputPath + ']', outputPath)
-  .option('-m, --mainScript [file]', 'Main Script File [default' + mainScriptFile + ']', mainScriptFile)
-  .parse(process.argv);
+    .version(packageJson.version)
+    .option('-v, --verbose', 'Verbose output')
+    .option('-w, --watch [path]', 'Watch Path [default' + watchPath + ']', watchPath)
+    .option('-o, --output [path]', 'Output Path [default' + outputPath + ']', outputPath)
+    .option('-m, --mainScript [file]', 'Main Script File [default' + mainScriptFile + ']', mainScriptFile)
+    .parse(process.argv);
 
 
 function log (message) {
