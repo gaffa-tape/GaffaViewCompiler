@@ -31,8 +31,10 @@ log('Watching ' + watchPath + ' for changes.');
 fs.watch(watchPath, function (eventType, filename) {
     if (eventType !== 'change' || path.extname(filename).toLowerCase() !== '.js') return;
     
-    log(filename + ' has changed. Recompiling.');
-    gvc(path.resolve(path.join(watchPath, filename)), outputPath, function (error, result) {
+    log(filename + ' has changed. Recompiling...');
+    gvc.parse(path.resolve(path.join(watchPath, filename)), outputPath, function (error, result) {
         if (error) return console.log(error.stack);
+        
+        log(filename + ' -> ' + path.basename(filename, path.extname(filename)) + '.json');
     });
 });

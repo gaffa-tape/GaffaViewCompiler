@@ -1,3 +1,4 @@
+// Some views require a global window object to be present
 GLOBAL.window = {
     location: {
         pathname: ''
@@ -29,20 +30,21 @@ GLOBAL.XMLHttpRequest = function () {
 
 var fs = require('fs'),
     path = require('path'),
-    browserify = require('browserify'),
-    temp = require('temp');
+    browserify = require('browserify');
 
 
-function parseDefinition (filename, outputPath, callback) {
+function parse (filename, outputPath, callback) {
     var object = browserify(filename).transform('gel-transform');
     
     object.bundle({}, function (error, data) {
         if (error) return callback(error);
         
         var json = JSON.stringify(eval(data)(1));
+        
+        // Cache buster
         json = json.replace('{', 
             '{"_" : "<style>*{display:none;}</style><script>window.location = window.location + \'?_bust=\' + +new Date();<\/script>", ');
-            
+        
         outputFilename = path.join(outputPath, path.basename(filename, path.extname(filename)) + '.json');
         
         fs.writeFile(outputFilename, json, function (error) {
@@ -53,4 +55,6 @@ function parseDefinition (filename, outputPath, callback) {
     });
 }
 
-module.exports = parseDefinition;
+module.exports = {
+    parse: parse
+};
