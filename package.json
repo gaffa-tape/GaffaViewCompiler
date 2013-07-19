@@ -22,8 +22,7 @@
   "dependencies": {
     "commander": ">= 1.1.1",
     "gaffa": "0.8.x",
-    "browserify": "2.13.x",
-    "temp": ">= 0.5.1"
+    "browserify": "2.13.x"
   },
   "readmeFilename": "readme.md",
   "preferGlobal": "true",

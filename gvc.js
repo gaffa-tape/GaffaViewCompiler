@@ -29,8 +29,7 @@ GLOBAL.XMLHttpRequest = function () {
 
 var fs = require('fs'),
     path = require('path'),
-    browserify = require('browserify'),
-    temp = require('temp');
+    browserify = require('browserify');
 
 
 function parseDefinition (filename, outputPath, callback) {
