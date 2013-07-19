@@ -20,9 +20,9 @@
   "author": "Maurice Butler <maurice.butler@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": ">= 1.1.1",
+    "commander": "2.0.x",
     "gaffa": "0.8.x",
-    "browserify": "2.13.x"
+    "browserify": "2.25.x"
   },
   "readmeFilename": "readme.md",
   "preferGlobal": "true",
