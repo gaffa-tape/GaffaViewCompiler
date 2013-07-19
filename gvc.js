@@ -39,7 +39,9 @@ function parse (filename, outputPath, callback) {
     object.bundle({}, function (error, data) {
         if (error) return callback(error);
         
-        var json = JSON.stringify(eval(data)(1));
+        // Dirty hack for finding which function to call on the Browserified module
+        var entryPoint = data.split(/\n/).slice(-2)[0].split('[').slice(-1)[0].replace('])', '');
+        var json = JSON.stringify(eval(data)(entryPoint));
         
         // Cache buster
         json = json.replace('{', 
