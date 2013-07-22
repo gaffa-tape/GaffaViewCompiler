@@ -14,7 +14,7 @@ Installation
 Usage
 ---------
 
-    gvc [options]
+   Usage gvc [options]
 
 Options:
 
@@ -28,6 +28,7 @@ Options:
   
     -o, --output [path]      Output Path [default ./]
   
+	-T, --throttle [milliseconds]  Minimum time between processing (milliseconds) [default 300]
   
   
 Warranty

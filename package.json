@@ -1,6 +1,6 @@
 {
   "name": "gaffaviewcompiler",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gaffa View Compiler",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "commander": "2.0.x",
     "gaffa": "0.8.x",
     "browserify": "2.25.x",
-    "gel-transform" : "0.0.4"    
+    "gel-transform" : "0.0.x"    
   },
   "readmeFilename": "readme.md",
   "preferGlobal": "true",
