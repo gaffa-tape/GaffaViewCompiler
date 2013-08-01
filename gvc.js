@@ -56,7 +56,7 @@ function parse (filename, outputPath, callback) {
                 callback(null, json);
             });
         } catch(exception){
-            console.log(exception);
+            callback(exception);
         }
     });
 }

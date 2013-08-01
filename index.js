@@ -46,7 +46,7 @@ function processFile(filename) {
             log(filename + ' -> ' + path.basename(filename, path.extname(filename)) + '.json');
         });
     } catch(exception) {
-        console.log(exception);
+        console.log(exception.stack || exception.message || exception);
     }
 }
 
