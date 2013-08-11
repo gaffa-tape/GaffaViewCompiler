@@ -1,6 +1,1 @@
 .git*
-*nw.exe
-*gvc.nw
-gvc
-build\node-webkit
-build\nw.exe
