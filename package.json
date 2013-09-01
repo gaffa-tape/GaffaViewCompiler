@@ -21,9 +21,9 @@
   "license": "MIT",
   "dependencies": {
     "commander": "2.0.x",
-    "gaffa": "0.8.x",
+    "gaffa": "0.x.x",
     "browserify": "2.25.x",
-    "gel-transform" : "0.0.x"    
+    "gel-transform" : "0.x.x"
   },
   "readmeFilename": "readme.md",
   "preferGlobal": "true",
