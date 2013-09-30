@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander'),
-    fs = require('fs'),
+    fs = require('graceful-fs'),
     path = require('path'),
     packageJson = require('./package.json'),
     gvc = require('./gvc'),
@@ -29,7 +29,7 @@ function log (message) {
 
 function tryToProcess(filename){
     var now = new Date();
-    
+
     clearTimeout(throttleTimeout);
     throttleTimeout = setTimeout(function(){
             processFile(filename);
@@ -41,12 +41,14 @@ function processFile(filename) {
     log(filename + ' has changed. Recompiling...');
     try{
         gvc.parse(path.resolve(path.join(watchPath, filename)), outputPath, function (error, result) {
-            if (error) return console.log(error.stack || error);
-            
+            if(error){
+                return console.log(error.stack || error);
+            }
+
             log(filename + ' -> ' + path.basename(filename, path.extname(filename)) + '.json');
         });
     } catch(exception) {
-        console.log(exception.stack || exception.message || exception);
+        console.log(exception.stack || exception);
     }
 }
 
