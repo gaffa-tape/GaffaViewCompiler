@@ -27,15 +27,18 @@ GLOBAL.XMLHttpRequest = function () {
     };
 };
 
-
-var fs = require('graceful-fs'),
+var gvc = {},
+    fs = require('graceful-fs'),
     path = require('path'),
     browserify = require('browserify'),
     gelTransform = require('gel-transform');
 
+gvc.transform = function transform(file) {
+    return gelTransform(file);
+};
 
-function parse (filename, outputPath, callback) {
-    var object = browserify(filename).transform(gelTransform);
+gvc.parse = function parse (filename, outputPath, callback) {
+    var object = browserify(filename).transform(gvc.transform);
 
     object.bundle({}, function (error, data) {
         if (error) return callback(error);
@@ -60,8 +63,6 @@ function parse (filename, outputPath, callback) {
             callback(exception);
         }
     });
-}
-
-module.exports = {
-    parse: parse
 };
+
+module.exports = gvc;
